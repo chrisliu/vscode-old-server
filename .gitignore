@@ -1,0 +1,12 @@
+# Build artifacts
+output/
+
+# Temporary files
+*.tar
+*.tar.gz
+*.tar.bz2
+*.sparseimage
+*.log
+
+# macOS
+.DS_Store
