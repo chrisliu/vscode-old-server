@@ -1,6 +1,6 @@
-# VS Code Server Patch for CentOS 7 and Older Linux Distributions
+# VS Code Server Patch for CentOS 7 and Older Linux Distributions (x86_64)
 
-This repository provides a reproducible build system for running VS Code Server on older Linux distributions (like CentOS 7) that have outdated glibc versions. Based on the [VS Code Remote FAQ](https://code.visualstudio.com/docs/remote/faq#_can-i-run-vs-code-server-on-older-linux-distributions).
+This repository provides a reproducible build system for running VS Code Server on older x86_64 Linux distributions (like CentOS 7) that have outdated glibc versions. Based on the [VS Code Remote FAQ](https://code.visualstudio.com/docs/remote/faq#_can-i-run-vs-code-server-on-older-linux-distributions).
 
 ## Problem
 
