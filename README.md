@@ -1,6 +1,6 @@
-# VS Code Server Patch for Older Linux Distributions
+# VS Code Server Patch for CentOS 7 and Older Linux Distributions
 
-This repository provides a reproducible build system for running VS Code Server on older Linux distributions like CentOS 7 that have outdated glibc versions.
+This repository provides a reproducible build system for running VS Code Server on older Linux distributions (like CentOS 7) that have outdated glibc versions. Based on the [VS Code Remote FAQ](https://code.visualstudio.com/docs/remote/faq#_can-i-run-vs-code-server-on-older-linux-distributions).
 
 ## Problem
 
@@ -12,8 +12,6 @@ VS Code 1.99+ requires glibc >= 2.28, but CentOS 7 ships with glibc 2.17. When c
 ## Solution
 
 Build a custom glibc 2.28 sysroot using [crosstool-ng](https://crosstool-ng.github.io/) and use [patchelf](https://github.com/NixOS/patchelf) to redirect VS Code Server binaries to the custom glibc at runtime.
-
-This approach is documented in the [VS Code Remote FAQ](https://code.visualstudio.com/docs/remote/faq#_can-i-run-vs-code-server-on-older-linux-distributions).
 
 ## Quick Start
 
@@ -68,6 +66,22 @@ The ABI tag comes from the kernel headers used during glibc compilation:
 - Kernel 4.x headers → ABI tag `4.x` → **Fails** on CentOS 7 (3.10.0 < 4.x)
 
 We use 3.2.101 because it's old enough to work on CentOS 7 while still being modern enough for glibc 2.28.
+
+### Customizing Component Versions
+
+To target a different Linux distribution, modify `build/crosstool-ng/config`:
+
+| Option | Description |
+|--------|-------------|
+| `CT_LINUX_VERSION` | Kernel headers version (must be <= target kernel) |
+| `CT_GLIBC_VERSION` | glibc version |
+| `CT_GCC_VERSION` | GCC version |
+| `CT_BINUTILS_VERSION` | binutils version |
+
+**Version compatibility notes:**
+- Kernel headers must be <= target system's kernel version
+- glibc, GCC, and binutils versions must be compatible with each other
+- Check [crosstool-ng docs](https://crosstool-ng.github.io/docs/) for supported version combinations
 
 ## How It Works
 
