@@ -104,6 +104,7 @@ vscode-patch/
 │   │   └── build.sh        # Build script
 │   └── patchelf/
 │       └── build.sh        # Build script (uses Alpine for C++17)
+├── installers/              # Pre-built standalone installers (GitHub Releases)
 ├── output/                  # Build artifacts (gitignored)
 │   ├── sysroot.tar         # Custom glibc sysroot (~260MB)
 │   └── patchelf            # Static patchelf binary (~6MB)
